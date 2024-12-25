@@ -26,14 +26,12 @@ pub fn solve() {
     }
 
     let mut unexplored: Vec<(usize, usize)>;
-    //let mut explored: HashSet<(usize, usize)>;
     let mut accessible: Vec<(usize, usize)>;
     let mut summits_reached: usize;
     let mut score = 0;
 
     for (row, col) in trailheads {
         unexplored = vec![(row, col)];
-        //explored = HashSet::new();
         summits_reached = 0;
         
         while !unexplored.is_empty() {
@@ -44,12 +42,6 @@ pub fn solve() {
             }
             accessible = find_accessible(&map, row, col);
             unexplored.append(&mut accessible);
-            //for location in accessible {
-            //    if !explored.contains(&location) {
-            //        unexplored.push(location);
-            //        explored.insert(location);
-            //    }
-            //}
         }
         println!("Score: {}", summits_reached);
         score += summits_reached;
